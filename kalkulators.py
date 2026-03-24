@@ -17,12 +17,12 @@ def btnClick(number):
 #==============================================
 
 def btncommand(command):
-    global number
     global mathOp
     global num1
     mathOp = command
     num1=float(e.get())
     e.delete(0,END)
+    e.insert(0, command)
     return 0
 
 
@@ -35,15 +35,21 @@ def vienads():
         result=num1+num2
     elif mathOp =="-":
         result=num1-num2
-    elif mathOp =="x":
+    elif mathOp =="*":
         result=num1*num2
-    elif mathOp ==":":
+    elif mathOp =="/":
         result=num1/num2
     else:
         result=0
     e.delete(0, END)
     e.insert(0,str(result))
     return
+
+def Clear():
+    e.delete(0,END)
+    num1=0
+    mathOp=" "
+    return 0
         
 
 btn0=Button(mansLogs, text="0", padx="40", pady="20", command=lambda:btnClick(0))
@@ -63,9 +69,9 @@ btn9=Button(mansLogs, text="9", padx="40", pady="20", command=lambda:btnClick(9)
 
 btnSum=Button(mansLogs,text="+", padx="40", pady="20", command=lambda:btncommand("+"))
 btnsub=Button(mansLogs,text="-", padx="40", pady="20", command=lambda:btncommand("-"))
-btndevide=Button(mansLogs,text=":", padx="40", pady="20", command=lambda:btncommand(":"))
-btntimes=Button(mansLogs,text="x", padx="40", pady="20", command=lambda:btncommand("x"))
-btnequal=Button(mansLogs,text="=", padx="40", pady="20") 
+btndevide=Button(mansLogs,text=":", padx="40", pady="20", command=lambda:btncommand("/"))
+btntimes=Button(mansLogs,text="*", padx="40", pady="20", command=lambda:btncommand("*"))
+btnequal=Button(mansLogs,text="=", padx="40", pady="20", command=lambda:vienads("="))
 btnClear=Button(mansLogs,text="C", padx="40", pady="20")
 btnhz=Button(mansLogs,text="+/-", padx="40", pady="20")
 btndecimal=Button(mansLogs,text=".", padx="40", pady="20")
